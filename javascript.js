@@ -1,7 +1,15 @@
-var number1 = 100
-var number2 = 100
+var number1 = i
+var number2 = j
+var numberTotal = i * j
 
-for (var number1; number1 < 1999; number1++) {
-    if number1 * number2 = (i " is divisible by 3");
-	else (i % 5 == 0) console.log(i " is divisible by 5");
+for (var i = 100; i < 1000; i++) {
+    return numberPal1;
 }
+
+for (var j; j < 1000; j++) {
+    return numberPal2;
+}
+
+if ((numberTotal == numberTotal.reverse) {
+    console.log(numberTotal.reverse + " is a palindrome!")
+} 
