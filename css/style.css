@@ -1,6 +1,5 @@
 body {
     font-family: sans-serif;
-  /* background-color: #f9fbfd; */
   background-color: lightgray
 }
 
@@ -16,6 +15,118 @@ header {
   padding-top: 0px;
   color: hsl(206, 17%, 28%);
 }
+
+/* walt this is the padding issue */
+
+
+
+
+
+
+
+
+
+.password-card {
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 5px;
+  border-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  color: hsl(206, 17%, 28%);
+  font-size: 18px;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 30px 40px;
+}
+
+.password-card-body {
+  min-height: 100px;
+}
+
+.password-card-footer {
+  text-align: center;
+}
+
+.password-card-footer::before {
+  content: " ";
+  display: block;
+  width: 100%;
+  background: #e7e9eb;
+  height: 2px;
+}
+
+.password-card-footer::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.password-btn {
+  border: none;
+  background-color: hsl(360, 91%, 36%);
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+    0px;
+  color: hsl(0, 0%, 100%);
+  display: inline-block;
+  font-size: 22px;
+  line-height: 22px;
+  margin: 16px 16px 16px 20px;
+  padding: 14px 34px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* button[disabled] {
+  cursor: default;
+  background: #c0c7cf;
+} */
+
+.password-float-right {
+  float: right;
+}
+
+#password {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  display: block;
+  width: 100%;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 85px;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px dashed #c0c7cf;
+  border-radius: 6px;
+  resize: none;
+  overflow: hidden;
+}
+
+
+.darkblue {
+  color: rgb(43, 43, 43);
+}
+
+.noDecoration, a:link, a:visited {
+  text-decoration: none;
+}
+
+.zoom {
+  transition: transform .3s;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.05); /* IE 9 */
+  -webkit-transform: scale(1.05); /* Safari 3-8 */
+  transform: scale(1.05); 
+}
+
+
 
 .card {
   background-color: hsl(0, 0%, 100%);
@@ -39,6 +150,21 @@ header {
 
 .card-body {
   min-height: 100px;
+  margin-bottom:10px;
+}
+
+.card-deck-2 {
+margin:0px;
+width: 100%;
+disp.lay: flex;
+justify-content: center;
+padding:0px;
+}
+
+.card-text {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .card-footer {
@@ -165,6 +291,21 @@ input[type=number]::-webkit-outer-spin-button {
 
 img {
   width: 450px;
+}
+
+.weatherCard {
+  max-height: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.searchWidth {
+  width:20px;
+}
+
+.iconCenter {
+  margin: auto;
 }
 
 @media only screen and (max-width:768px) {
