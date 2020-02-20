@@ -176,9 +176,25 @@
 
       <div class="col-3">
         <nav class="navbar navbar-light bg-secondary" style="padding:0px">
-          <form class="form-inline">
-            <input style="width:75%" class="form-control search" type="search" placeholder="Search for a city" aria-label="Search">
-            <button style="margin:0px;margin-left:10px;" class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+          <form class="form-inline" id="citySearchForm">
+
+            <input
+            id="citySearchInput"
+            style="width:70%;display:flex"
+            class="form-control search"
+            type="search"
+            placeholder="Search for a city"
+            aria-label="Search">
+            
+            <button
+            id="citySearchButton"
+            style="width:20%;display:flex;margin:0px;margin-left:10px;"
+            class="btn btn-primary my-2 my-sm-0"
+            type="submit"
+            >
+            
+            <i class="fas fa-search"></i></button>
+
           </form>
         </nav>
 
@@ -186,13 +202,12 @@
 <br>&nbsp;</br>
 
         <ul class="list-group">
-          <li class="list-group-item text-dark active">Cras justo odio</li>
-          <li class="list-group-item text-dark disabled">Dapibus ac facilisis in</li>
-          <li class="list-group-item text-dark">Morbi leo risus</li>
-          <li class="list-group-item text-dark">Porta ac consectetur ac</li>
-          <li class="list-group-item text-dark">Vestibulum at eros</li>
+          <li id="sidebar1" class="list-group-item text-dark active"></li>
+          <li id="sidebar2" class="list-group-item text-dark disabled"></li>
+          <li id="sidebar3" class="list-group-item text-dark"></li>
+          <li id="sidebar4" class="list-group-item text-dark"></li>
+          <li id="sidebar5" class="list-group-item text-dark"></li>
         </ul>
-
 
       </div>
 
@@ -205,15 +220,15 @@
           <div class="card weatherCard">
             
             <div class="card-body">
-              <h5 id="date-1" class="card-title">CITY</h5>
+              <h5 id="mainCity" class="card-title">CITY: </h5>
               <p id="favicon-1">
                 <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
               </p>
 
-              <p id="date-1">Temperature</p>
-              <p id="date-1">Humidity</p>
-              <p id="date-1">Wind Speed</p>
-              <p id="date-1">UV Index</p>
+              <p id="mainTemp">Temp: </p>
+              <p>Humidity: <span id="mainHumidity"></span> %</p>
+              <p>Wind: <span id="mainWind"></span> MPH</p>
+              <p id="mainUV">UV Index: </p>
             </div>
 
           </div>
@@ -222,86 +237,90 @@
 
 
         <br>
+        <br>
+        <h5 id="date-1" class="card-title">5 Day Forecast</h5>
+        <br>
         
         <div class="card-deck">
 
-          <div class="card weatherCard">
+          <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 id="date-1" class="card-title">Date</h5>
-              <p id="favicon-1">
+              <h5 id="smallDate1" class="card-title">Date: </h5>
+              <p id="smallFavicon1">
                 <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
               </p>
 
-              <p id="date-1">Temperature</p>
-              <p id="date-1">Humidity</p>
+              <p id="smallTemp1">Temp: </p>
+              <p id="smallHumidity1">Humidity: </p>
             </div>
 
           </div>
 
 
-          <div class="card weatherCard">
+          <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 id="date-1" class="card-title">Date</h5>
-              <p id="favicon-1">
+              <h5 id="smallDate2" class="card-title">Date: </h5>
+              <p id="smallFavicon2">
                 <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
               </p>
 
-              <p id="date-1">Temperature</p>
-              <p id="date-1">Humidity</p>
-            </div>
-
-          </div>
-
-
-
-          <div class="card weatherCard">
-            
-            <div class="card-body">
-              <h5 id="date-1" class="card-title">Date</h5>
-              <p id="favicon-1">
-                <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
-              </p>
-
-              <p id="date-1">Temperature</p>
-              <p id="date-1">Humidity</p>
+              <p id="smallTemp2">Temp: </p>
+              <p id="smallHumidity2">Humidity: </p>
             </div>
 
           </div>
 
 
 
-
-          <div class="card weatherCard">
+          <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 id="date-1" class="card-title">Date</h5>
-              <p id="favicon-1">
+              <h5 id="smallDate3" class="card-title">Date: </h5>
+              <p id="smallFavicon3">
                 <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
               </p>
 
-              <p id="date-1">Temperature</p>
-              <p id="date-1">Humidity</p>
+              <p id="smallDate3">Temp: </p>
+              <p id="date-1">Humidity: </p>
             </div>
 
           </div>
 
 
 
-          <div class="card weatherCard">
+
+          <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 id="date-1" class="card-title">Date</h5>
-              <p id="favicon-1">
+              <h5 id="smallDate4" class="card-title">Date: </h5>
+              <p id="smallFavicon4">
                 <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
               </p>
 
-              <p id="date-1">Temperature</p>
-              <p id="date-1">Humidity</p>
+              <p id="smallTemp4">Temp: </p>
+              <p id="smallHumidity4">Humidity: </p>
             </div>
 
           </div>
+
+
+
+          <div class="card weatherCard bg-primary">
+            
+            <div class="card-body">
+              <h5 id="smallDate5" class="card-title">Date: </h5>
+              <p id="smallFavicon5">
+                <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
+              </p>
+
+              <p id="smallTemp5">Temp: </p>
+              <p id="smallHumidity5">Humidity: </p>
+            </div>
+
+          </div>
+
 
 
         </div>
@@ -373,6 +392,8 @@
 
 
 <!-- Bootstrap core JavaScript -->
+
+
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
