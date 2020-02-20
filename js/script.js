@@ -58,7 +58,8 @@ function getUVIndex(coords) {
   console.log(coords)
   var lat = coords.lat;
   var lon = coords.lon;
-  var queryUV = "http://api.openweathermap.org/data/2.5/uvi?appid=9eb05d381db07ca6a0d36e08a08087f1&lat=" + lat + "&lon=" + lon;
+  var queryUV = "http://api.openweathermap.org/data/2.5/uvi/forecast?appid=9eb05d381db07ca6a0d36e08a08087f1&lat=" + lat + "&lon=" + lon;
+
 
   $.ajax({
     url: queryUV,
@@ -67,18 +68,19 @@ function getUVIndex(coords) {
     // Open Weather returns a JSON form
 
   }).then(function(response) {
-var valueUV = response.value;
-var el = $("<span>").text(valueUV);
+    var valueUV = response[0].value;
+    console.log(response)
+    var el = $("<span>").text(valueUV);
 
-if (valueUV < 3) {
-  el.addClass("heatIndexGreen")
-} else if (valueUV < 7) {
-  el.addClass("heatIndexYellow")
-} else {
-  el.addClass("heatIndexRed")
-}
+    if (valueUV < 3) {
+      el.addClass("heatIndexGreen")
+    } else if (valueUV < 7) {
+      el.addClass("heatIndexYellow")
+    } else {
+      el.addClass("heatIndexRed")
+    }
 
-$("#mainUV").append(el)
+    $("#mainUV").append(el)
 
   })
     
@@ -129,8 +131,8 @@ $("#mainUV").append(el)
 // send that to each respective <div> elements
 
 
-
-
+localStorage.setItem('user', citySearchEntry)
+// localStorage.getItem('user', citySearchEntry)
 
 
 // make a loop of the 5 day forecast similiar to the Pearl Jam Quiz
@@ -170,3 +172,4 @@ srtingify
 // UV Index = var queryURL = "https://api.openweathermap.org/data/2.5/uvi?q=
 // 1 day = var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=
 // 5 day = var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=
+*/
