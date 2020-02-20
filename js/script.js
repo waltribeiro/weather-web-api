@@ -43,6 +43,23 @@ var coords = response.coord
     var currentTime4 = $("#currentDayPlus4").text(moment().add(4, 'days').format("MM/DD/YYYY"));
 
 
+var currentWeather = "<i class=\"fas fa-sun d-flex justify-content-center\" style=\"margin:10px\"></i>"
+
+$("#currentWeather").append(currentWeather);
+
+console.log(currentWeather)
+
+/*
+<i class="fas fa-cloud d-flex justify-content-center" style="margin:10px"></i>
+<i class="fas fa-rainy d-flex justify-content-center" style="margin:10px"></i>
+<i class="fas fa-snowflake d-flex justify-content-center" style="margin:10px"></i>
+<i class="fas fa-cloud-rain d-flex justify-content-center" style="margin:10px"></i>
+
+
+var mainDiv1 = document.createElement("div");
+var mainDiv1CityName = mainDiv1.textContent = bigCityName1;
+    $("#mainCity").append(mainDiv1CityName);
+*/
 
     getUVIndex(coords)
 
@@ -59,6 +76,11 @@ var coords = response.coord
         $("#mainTemp").append(mainDiv2Temperature);
 
   });
+
+var indexOfArray = 0;
+for (x = 0; x < 6; x++) {
+
+}
 
 function getUVIndex(coords) {
   console.log(coords)
