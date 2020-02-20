@@ -1,13 +1,13 @@
-var apiKey = "9eb05d381db07ca6a0d36e08a08087f1";
+let apiKey = "9eb05d381db07ca6a0d36e08a08087f1";
 
 // search button captures the input you type in
 
 document.getElementById('citySearchForm').addEventListener("submit", function(event) {
   event.preventDefault();
-  var citySearchEntry = document.getElementById("citySearchInput").value;
+  let citySearchEntry = document.getElementById("citySearchInput").value;
   console.log(citySearchEntry)
-  var queryURL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + citySearchEntry + "&appid=" + apiKey;
-  var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + citySearchEntry + "&appid=" + apiKey;
+  let queryURL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + citySearchEntry + "&appid=" + apiKey;
+  let queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + citySearchEntry + "&appid=" + apiKey;
 
   console.log(queryURL1)
   console.log(queryURL2)
@@ -31,62 +31,116 @@ document.getElementById('citySearchForm').addEventListener("submit", function(ev
     console.log(response.main.temp);
     
     
-var coords = response.coord
-    var bigCityName1 = response.name;
-    var bigTemperature1 = ((Math.floor(response.main.temp - 273.15) * 1.80 + 32) + " degrees")
-    var bigHumidity1 = response.main.humidity
-    var bigWindSpeed1 = response.wind.speed
-    var currentTime = $("#currentDay").text(moment().format("MM/DD/YYYY"));
-    var currentTime1 = $("#currentDayPlus1").text(moment().add(1, 'days').format("MM/DD/YYYY"));
-    var currentTime2 = $("#currentDayPlus2").text(moment().add(2, 'days').format("MM/DD/YYYY"));
-    var currentTime3 = $("#currentDayPlus3").text(moment().add(3, 'days').format("MM/DD/YYYY"));
-    var currentTime4 = $("#currentDayPlus4").text(moment().add(4, 'days').format("MM/DD/YYYY"));
+    let coords = response.coord
+    let bigCityName1 = response.name;
+    let bigTemperature1 = ((Math.floor(response.main.temp - 273.15) * 1.80 + 32) + " degrees")
+    let bigHumidity1 = response.main.humidity
+    let bigWindSpeed1 = response.wind.speed
+    let currentTime = $("#currentDay").text(moment().format("MM/DD/YYYY"));
+    let currentTime1 = $("#currentDayPlus1").text(moment().add(1, 'days').format("MM/DD/YYYY"));
+    let currentTime2 = $("#currentDayPlus2").text(moment().add(2, 'days').format("MM/DD/YYYY"));
+    let currentTime3 = $("#currentDayPlus3").text(moment().add(3, 'days').format("MM/DD/YYYY"));
+    let currentTime4 = $("#currentDayPlus4").text(moment().add(4, 'days').format("MM/DD/YYYY"));
 
 
-var currentWeather = "<i class=\"fas fa-sun d-flex justify-content-center\" style=\"margin:10px\"></i>"
+let currentWeatherSun = "<i class=\"fas fa-sun d-flex justify-content-center\" style=\"margin:10px\"></i>"
 
-$("#currentWeather").append(currentWeather);
+let currentWeatherCloud = "<i class=\"fas fa-cloud d-flex justify-content-center\" style=\"margin:10px\"></i>"
+
+let currentWeatherSnow = "<i class=\"fas fa-snowflake d-flex justify-content-center\" style=\"margin:10px\"></i>"
+
+let currentWeatherRain = "<i class=\"fas fa-rainy d-flex justify-content-center\" style=\"margin:10px\"></i>"
+
+let currentWeatherCloudRain = "<i class=\"fas fa-cloud-rain d-flex justify-content-center\" style=\"margin:10px\"></i>"
+
+
+// local storage
+let storedArrayString = localStorage.getItem("searches");
+let mySearches;
+if (storedArrayString === null) {
+    mySearches = [];
+} else { // a string representation of an array
+  mySearches = JSON.parse(storedArrayString);
+
+}
+
+let mySearches = [];
+//you can .push on arrays but you can not .push on strings, so you need to convert it
+mySearches.push(citySearchEntry);
+
+localStorage.setItem("searches", JSON.stringify(mySearches));
+
+// parse converts from a string into a javascript object (in this case that would be an array)
+
+let myData = JSON.parse(localStorage.getItem("searches"));
+console.log(myData);
+
+let myDataConverted = JSON.parse(localStorage.getItem("searches"))
+console.log(myDataConverted);
+
+
+let citySearchEntryTotal = 1;
+function citySearchFunction() {
+  $("#sidebar" + citySearchEntryTotal).append(citySearchEntry)
+  citySearchEntryTotal++
+}
+citySearchFunction()
+
+
+$("#currentWeather").append(currentWeatherSun);
 
 console.log(currentWeather)
 
+let weatherFromArray = list["0"].weather["0"];
+
+if (weatherFromArray = "Clear") {
+  $("#currentWeather").append(currentWeatherSun);
+} else if (weatherFromArray = "Rain") {
+  $("#currentWeather").append(currentWeatherRain);
+} else if (weatherFromArray = "Snow") {
+  $("#currentWeather").append(currentWeatherSnow);
+} else {
+  $("#currentWeather").append(currentWeatherCloud);
+}
+
+
+
 /*
-<i class="fas fa-cloud d-flex justify-content-center" style="margin:10px"></i>
-<i class="fas fa-rainy d-flex justify-content-center" style="margin:10px"></i>
-<i class="fas fa-snowflake d-flex justify-content-center" style="margin:10px"></i>
-<i class="fas fa-cloud-rain d-flex justify-content-center" style="margin:10px"></i>
-
-
-var mainDiv1 = document.createElement("div");
-var mainDiv1CityName = mainDiv1.textContent = bigCityName1;
+let mainDiv1 = document.createElement("div");
+let mainDiv1CityName = mainDiv1.textContent = bigCityName1;
     $("#mainCity").append(mainDiv1CityName);
 */
 
     getUVIndex(coords)
 
+    let mainDiv1 = document.createElement("div");
+    let mainDiv1CityName = mainDiv1.textContent = bigCityName1;
+        $("#mainCity").append(mainDiv1CityName);
+
+    let mainDiv2 = document.createElement("div");
+    let mainDiv2Temperature = mainDiv2.textContent = bigTemperature1;
+        $("#mainTemp").append(mainDiv2Temperature);
+        
     $("#mainHumidity").text(bigHumidity1)
 
     $("#mainWind").text(bigWindSpeed1)
 
-    var mainDiv1 = document.createElement("div");
-    var mainDiv1CityName = mainDiv1.textContent = bigCityName1;
-        $("#mainCity").append(mainDiv1CityName);
 
-    var mainDiv2 = document.createElement("div");
-    var mainDiv2Temperature = mainDiv2.textContent = bigTemperature1;
-        $("#mainTemp").append(mainDiv2Temperature);
+
+
 
   });
 
-var indexOfArray = 0;
+  let indexOfArray = 0;
 for (x = 0; x < 6; x++) {
 
 }
 
 function getUVIndex(coords) {
   console.log(coords)
-  var lat = coords.lat;
-  var lon = coords.lon;
-  var queryUV = "http://api.openweathermap.org/data/2.5/uvi/forecast?appid=9eb05d381db07ca6a0d36e08a08087f1&lat=" + lat + "&lon=" + lon;
+  let lat = coords.lat;
+  let lon = coords.lon;
+  let queryUV = "http://api.openweathermap.org/data/2.5/uvi/forecast?appid=9eb05d381db07ca6a0d36e08a08087f1&lat=" + lat + "&lon=" + lon;
 
 
   $.ajax({
@@ -96,9 +150,9 @@ function getUVIndex(coords) {
     // Open Weather returns a JSON form
 
   }).then(function(response) {
-    var valueUV = response[0].value;
+    let valueUV = response[0].value;
     console.log(response)
-    var el = $("<span>").text(valueUV);
+    let el = $("<span>").text(valueUV);
 
     if (valueUV < 3) {
       el.addClass("heatIndexGreen")
@@ -137,18 +191,18 @@ function getUVIndex(coords) {
     console.log(response.city.coord.lon);
     console.log(main.temp);
     
-    var cityName2 = response.city.name
-    var temperature2 = ((Math.floor(response.list["0"].main.temp - 273.15) * 1.80 + 32) + " degrees")
-    var humidity2 = response.list["0"].main.humidity
-    var windSpeed2 = response.list["0"].wind.speed
-    var uvIndex2 = response.city.name
+    let cityName2 = response.city.name
+    let temperature2 = ((Math.floor(response.list["0"].main.temp - 273.15) * 1.80 + 32) + " degrees")
+    let humidity2 = response.list["0"].main.humidity
+    let windSpeed2 = response.list["0"].wind.speed
+    let uvIndex2 = response.city.name
 
-    var mainDiv1 = document.createElement("div");
-    var mainDiv1CityName = mainDiv1.textContent = cityName;
+    let mainDiv1 = document.createElement("div");
+    let mainDiv1CityName = mainDiv1.textContent = cityName;
         $("#mainCity").append(mainDiv1CityName);
 
-    var mainDiv2 = document.createElement("div");
-    var mainDiv2Temperature = mainDiv2.textContent = temperature;
+    let mainDiv2 = document.createElement("div");
+    let mainDiv2Temperature = mainDiv2.textContent = temperature;
         $("#mainTemp").append(mainDiv2Temperature);
 
   });
@@ -158,11 +212,6 @@ function getUVIndex(coords) {
 
 // send that to each respective <div> elements
 
-
-localStorage.setItem('user', citySearchEntry)
-// localStorage.getItem('user', citySearchEntry)
-
-
 // make a loop of the 5 day forecast similiar to the Pearl Jam Quiz
 
 
@@ -171,11 +220,11 @@ localStorage.setItem('user', citySearchEntry)
 
 
 // Password checker for private work
-var chosenWord = "art";
+let chosenWord = "art";
 
 
 function checkPass() {
-    var promptInput = prompt("Please enter the password to see more work");
+    let promptInput = prompt("Please enter the password to see more work");
     if (promptInput === chosenWord) {
         window.location.replace("http://linkedin.waltrib.com");
     } else if (promptInput != chosenWord) {
@@ -192,8 +241,6 @@ get the value of what we searched
 push the value of what we searched ito an aray that is going to hold
 an array that is empty and this array is going to hold all of our search queries
 push this into our search history
-
-var history = local storage. setItem
 
 srtingify
 
