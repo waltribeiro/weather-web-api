@@ -36,7 +36,13 @@ var coords = response.coord
     var bigTemperature1 = ((Math.floor(response.main.temp - 273.15) * 1.80 + 32) + " degrees")
     var bigHumidity1 = response.main.humidity
     var bigWindSpeed1 = response.wind.speed
-    // var bigUVIndex1 = 
+    var currentTime = $("#currentDay").text(moment().format("MM/DD/YYYY"));
+    var currentTime1 = $("#currentDayPlus1").text(moment().add(1, 'days').format("MM/DD/YYYY"));
+    var currentTime2 = $("#currentDayPlus2").text(moment().add(2, 'days').format("MM/DD/YYYY"));
+    var currentTime3 = $("#currentDayPlus3").text(moment().add(3, 'days').format("MM/DD/YYYY"));
+    var currentTime4 = $("#currentDayPlus4").text(moment().add(4, 'days').format("MM/DD/YYYY"));
+
+
 
     getUVIndex(coords)
 
