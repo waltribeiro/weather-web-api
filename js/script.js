@@ -13,28 +13,34 @@ function getUVIndex(coords) {
   // $("#citySearchForm").empty();
   // $("#citySearchInput").empty();
   // $("#citySearchButton").empty();
-  $("#mainCity").empty();
-  $("#currentDayPlus0").empty();
+  // $("#mainCity").empty();
+  // $("#currentDayPlus0").empty();
 
   $("#mainTemp").empty();
   $("#mainHumidity").empty();
   $("#mainWind").empty();
   $("#mainUV").empty();
-  $("#currentDayPlus1").empty();
+  // $("#currentDayPlus1").empty();
   $("#smallTemp1").empty();
   $("#smallHumidity1").empty();
-  $("#currentDayPlus2").empty();
+  // $("#currentDayPlus2").empty();
   $("#smallTemp2").empty();
   $("#smallHumidity2").empty();
-  $("#currentDayPlus3").empty();
+  // $("#currentDayPlus3").empty();
   $("#smallTemp3").empty();
   $("#smallHumidity3").empty();
-  $("#currentDayPlus4").empty();
+  // $("#currentDayPlus4").empty();
   $("#smallTemp4").empty();
   $("#smallHumidity4").empty();
-  $("#currentDayPlus5").empty();
+  // $("#currentDayPlus5").empty();
   $("#smallTemp5").empty();
   $("#smallHumidity5").empty();
+ 
+  $("#weatherIconSmall1").empty();
+  $("#weatherIconSmall2").empty();
+  $("#weatherIconSmall3").empty();
+  $("#weatherIconSmall4").empty();
+  $("#weatherIconSmall5").empty();
 
 
   var lat = coords.lat;
@@ -70,7 +76,11 @@ function getUVIndex(coords) {
 
 //THIS FUNCTION HANDLES AJAX CALL FOR CURRENT WEATHER
 function searchWeather(val) {
-  console.log('val',val)
+  var iconSun = "<i class='fas fa-sun fa-7x d-flex justify-content-center' style='margin:10px'></i>";
+  var iconRain = "<i class='fas fa-cloud-rain fa-7x d-flex justify-content-center' style='margin:10px'></i>";
+  var iconSnowflake = "<i class='far fa-snowflake fa-7x d-flex justify-content-center' style='margin:10px'></i>";
+  var iconCloud = "<i class='fas fa-cloud fa-7x d-flex justify-content-center' style='margin:10px'></i>";
+  
   $.ajax({
     url: "https://api.openweathermap.org/data/2.5/weather?q=" + val + "&appid=" + apiKey,
     method: "GET"
@@ -87,6 +97,23 @@ function searchWeather(val) {
       $(".list-group-history").append(li);
     }
     
+    console.log(response)
+
+    console.log("YEAEEE")
+
+if (response.weather["0"].main == "Clouds") {
+  $("#weatherIconMain").empty();
+  $("#weatherIconMain").append(iconCloud);
+} else if (response.weather["0"].main == "Clear") {
+  $("#weatherIconMain").empty();
+  $("#weatherIconMain").append(iconSun);
+} else if (response.weather["0"].main == "Rain") {
+  $("#weatherIconMain").empty();
+  $("#weatherIconMain").append(iconRain);
+} else {}
+
+
+
     var coords = response.coord
     var bigCityName1 = response.name;
 //KELVIN TO FARENTHEIT DEGREES
@@ -97,23 +124,24 @@ function searchWeather(val) {
 
     getUVIndex(coords)
 
-    $("#mainHumidity").text(bigHumidity1)
-
-    $("#mainWind").text(bigWindSpeed1)
-
     var mainDiv1 = document.createElement("div");
     var mainDiv1CityName = mainDiv1.textContent = bigCityName1;
         $("#mainCity").text(mainDiv1CityName);
 
     var mainDiv2 = document.createElement("div");
     var mainDiv2Temperature = mainDiv2.textContent = bigTemperature1;
-    $("#mainTemp").text(mainDiv2Temperature);
+    $("#mainTemp").text(mainDiv2Temperature + " °");
+
+    $("#mainHumidity").text(bigHumidity1 + " %")
+
+    $("#mainWind").text(bigWindSpeed1 + " mph")
+
 
   });
 }
 
 //MOMENT.js
-    var currentTime = $("#currentDayPlus0").text(moment().format("dddd MMMM D").toUpperCase());
+    var currentTime = $("#currentDayPlus0").text(moment().format("ddd MMM D").toUpperCase());
     var currentTime1 = $("#currentDayPlus1").text(moment().add(1, 'days').format("ddd / D").toUpperCase());
     var currentTime2 = $("#currentDayPlus2").text(moment().add(2, 'days').format("ddd / D").toUpperCase());
     var currentTime3 = $("#currentDayPlus3").text(moment().add(3, 'days').format("ddd / D").toUpperCase());
@@ -139,17 +167,28 @@ function searchForecast(val) {
     console.log(response.list["0"].main.temp)
 
     for (x = 0; x < 6; x++) {
-
       let weatherTemp = response.list[x].main.temp;
-      $("#smallTemp" + [x]).append((Math.floor(weatherTemp - 273.15) * 1.80 + 32).toFixed(0) + "°");
-      
+      $("#smallTemp" + [x]).append((Math.floor(weatherTemp - 273.15) * 1.80 + 32).toFixed(0) + "°");     
     }
     
     for (x = 0; x < 6; x++) {
       let weatherHumidity = response.list[x].main.humidity;
-      $("#smallHumidity" + [x]).append(weatherHumidity.toFixed(0) + "%");
-      
+      $("#smallHumidity" + [x]).append(weatherHumidity.toFixed(0) + "%");    
     }
+
+    var iconSun = "<i class='fas fa-sun fa-7x d-flex justify-content-center' style='margin:10px'></i>";
+    var iconRain = "<i class='fas fa-cloud-rain fa-7x d-flex justify-content-center' style='margin:10px'></i>";
+    var iconSnowflake = "<i class='far fa-snowflake fa-7x d-flex justify-content-center' style='margin:10px'></i>";
+    var iconCloud = "<i class='fas fa-cloud-sun fa-7x d-flex justify-content-center' style='margin:10px'></i>";
+
+    for (x = 0; x < 6; x++) {
+      let weatherIcons = response.list[x].weather[x].main;
+      $("#weatherIconSmall" + [x]).append(weatherIcons);    
+    }
+
+console.log("===========")
+console.log(response.list[0].weather[0].main)
+console.log("===========")
 
     console.log("============")
     // Go through the JSON form and pull data from the objects
@@ -169,8 +208,6 @@ function searchForecast(val) {
     var littleWindSpeed1 = response.wind.speed;
 
 
-
-    
 
 
   //   // var bigUVIndex1 = 

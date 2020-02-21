@@ -221,26 +221,38 @@
               
             <div class="card-body">
 
-              <div class="d-inline-block w-30">
-                <h2 id="mainCity" class="card-title"></h2>
-                <h5 id="currentDayPlus0" class="card-title"></h5>
-                <p id="favicon-1">
-                  <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
-                </p>
+              <h2 class="card-title">
+                <span id="mainCity">
+                  <span style="color:white">
+                    Starts
+                  </span>
+                </span>
+                <span id="currentDayPlus0" class="text-right float-right" style="margin-right:10%"></span>
+              </h2>
+
+              <div class="d-inline-block w-25">
+                
+                
                 <p class="text-left"><strong>Temp: &nbsp;</strong></p>
                 <p class="text-left"><strong>Humid: &nbsp;</strong></p>
                 <p class="text-left"><strong>Wind: &nbsp;</strong></p>
                 <p class="text-left"><strong>UV Index: &nbsp;</strong></p>
               </div>
 
-              <div class="d-inline-block w-50">
+              <div class="d-inline-block w-25">
                 <h5>&nbsp;</h5>
-                <p><span id="mainTemp"></span> °</p>
-                <p><span id="mainHumidity"></span> %</p>
-                <p><span id="mainWind"></span> mph</p>
+                <p><span id="mainTemp"></span></p>
+                <p><span id="mainHumidity"></span></p>
+                <p><span id="mainWind"></span></p>
                 <p><span id="mainUV"></span></p>
               </div>
+
+              <div id="weatherIconMain" class="d-inline-block w-25 justify-center align-text-bottom">
+                
+              </div>
           
+
+
 
             </div>
 
@@ -252,7 +264,7 @@
         <br>
 
         <h5 id="date-1" class="card-title">5 Day Forecast</h5>
- 
+
         <br>
         
         <div class="card-deck">
@@ -260,11 +272,9 @@
           <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 class="card-title">Date: <span id="currentDayPlus1"></span></h5>
-              <p id="smallFavicon1">
-                <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
+              <h5 class="card-title"><span id="currentDayPlus1"></span></h5>
+              <p id="weatherIconSmall1">
               </p>
-
               <p>Temp: <span id="smallTemp1"></span></p>
               <p>Humid: <span id="smallHumidity1"></span></p>
             </div>
@@ -275,9 +285,8 @@
           <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 class="card-title">Date: <span id="currentDayPlus2"></span></h5>
-              <p id="smallFavicon2">
-                <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
+              <h5 class="card-title"><span id="currentDayPlus2"></span></h5>
+              <p id="weatherIconSmall2">
               </p>
 
               <p>Temp: <span id="smallTemp2"></span></p>
@@ -291,9 +300,8 @@
           <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 class="card-title">Date: <span id="currentDayPlus3"></span></h5>
-              <p id="smallFavicon3">
-                <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
+              <h5 class="card-title"><span id="currentDayPlus3"></span></h5>
+              <p id="weatherIconSmall3">
               </p>
 
               <p>Temp: <span id="smallTemp3"></span></p>
@@ -308,9 +316,8 @@
           <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 class="card-title">Date: <span id="currentDayPlus4"></span></h5>
-              <p id="smallFavicon4">
-                <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
+              <h5 class="card-title"><span id="currentDayPlus4"></span></h5>
+              <p id="weatherIconSmall4">
               </p>
 
               <p>Temp: <span id="smallTemp4"></span></p>
@@ -324,9 +331,8 @@
           <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 class="card-title">Date: <span id="currentDayPlus5"></span></h5>
-              <p id="smallFavicon5">
-                <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
+              <h5 class="card-title"><span id="currentDayPlus5"></span></h5>
+              <p id="weatherIconSmall5">
               </p>
 
               <p>Temp: <span id="smallTemp5"></span></p>
