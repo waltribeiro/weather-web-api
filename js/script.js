@@ -55,18 +55,17 @@ function getUVIndex(coords) {
 
   }).then(function(response) {
     // console.log(response)
-      var valueUV = response.value;
-      var el = $("<span>").text(valueUV);
+      
+      $("#mainUV").append(response.value)
 
-      if (valueUV < 3) {
-        el.addClass("heatIndexGreen")
-      } else if (valueUV < 7) {
-        el.addClass("heatIndexYellow")
+      if (response.value < 3) {
+        $("#mainUV").addClass("heatIndexGreen")
+      } else if (response.value < 7) {
+        $("#mainUV").addClass("heatIndexYellow")
       } else {
-        el.addClass("heatIndexRed")
+        $("#mainUV").addClass("heatIndexRed")
       }
 
-        $("#mainUV").append(el)
 
   })
       
