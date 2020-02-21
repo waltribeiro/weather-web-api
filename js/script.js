@@ -10,6 +10,33 @@
 //FUNCTION HANDLES AJAX FOR UV INDEX
 function getUVIndex(coords) {
 
+  // $("#citySearchForm").empty();
+  // $("#citySearchInput").empty();
+  // $("#citySearchButton").empty();
+  $("#mainCity").empty();
+  $("#currentDayPlus0").empty();
+
+  $("#mainTemp").empty();
+  $("#mainHumidity").empty();
+  $("#mainWind").empty();
+  $("#mainUV").empty();
+  $("#currentDayPlus1").empty();
+  $("#smallTemp1").empty();
+  $("#smallHumidity1").empty();
+  $("#currentDayPlus2").empty();
+  $("#smallTemp2").empty();
+  $("#smallHumidity2").empty();
+  $("#currentDayPlus3").empty();
+  $("#smallTemp3").empty();
+  $("#smallHumidity3").empty();
+  $("#currentDayPlus4").empty();
+  $("#smallTemp4").empty();
+  $("#smallHumidity4").empty();
+  $("#currentDayPlus5").empty();
+  $("#smallTemp5").empty();
+  $("#smallHumidity5").empty();
+
+
   var lat = coords.lat;
   var lon = coords.lon;
   var queryUV = "http://api.openweathermap.org/data/2.5/uvi?appid=9eb05d381db07ca6a0d36e08a08087f1&lat=" + lat + "&lon=" + lon;
@@ -62,7 +89,8 @@ function searchWeather(val) {
     
     var coords = response.coord
     var bigCityName1 = response.name;
-    var bigTemperature1 = ((Math.floor(response.main.temp - 273.15) * 1.80 + 32).toFixed(2))
+//KELVIN TO FARENTHEIT DEGREES
+    var bigTemperature1 = ((Math.floor(response.main.temp - 273.15) * 1.80 + 32).toFixed(0))
     var bigHumidity1 = response.main.humidity
     var bigWindSpeed1 = response.wind.speed
   //   // var bigUVIndex1 = 
@@ -85,7 +113,7 @@ function searchWeather(val) {
 }
 
 //MOMENT.js
-    var currentTime = $("#currentDayPlus0").text(moment().format("dddd").toUpperCase() + " the " + (moment().format("D").toUpperCase() ));
+    var currentTime = $("#currentDayPlus0").text(moment().format("dddd MMMM D").toUpperCase());
     var currentTime1 = $("#currentDayPlus1").text(moment().add(1, 'days').format("ddd / D").toUpperCase());
     var currentTime2 = $("#currentDayPlus2").text(moment().add(2, 'days').format("ddd / D").toUpperCase());
     var currentTime3 = $("#currentDayPlus3").text(moment().add(3, 'days').format("ddd / D").toUpperCase());
@@ -111,8 +139,16 @@ function searchForecast(val) {
     console.log(response.list["0"].main.temp)
 
     for (x = 0; x < 6; x++) {
+
       let weatherTemp = response.list[x].main.temp;
-      $("#smallTemp" + [x]).append((weatherTemp).toFixed(0) + "°");
+      $("#smallTemp" + [x]).append((Math.floor(weatherTemp - 273.15) * 1.80 + 32).toFixed(0) + "°");
+      
+    }
+    
+    for (x = 0; x < 6; x++) {
+      let weatherHumidity = response.list[x].main.humidity;
+      $("#smallHumidity" + [x]).append(weatherHumidity.toFixed(0) + "%");
+      
     }
 
     console.log("============")
@@ -128,7 +164,7 @@ function searchForecast(val) {
     
     var coords = response.coord
     var littleCityName1 = response.name;
-    var littleTemperature1 = ((Math.floor(response.main.temp - 273.15) * 1.80 + 32).toFixed(2));
+    var littleTemperature1 = ((Math.floor(response.main.temp - 273.15) * 1.80 + 32).toFixed(0) + "°");
     var littleHumidity1 = response.main.humidity;
     var littleWindSpeed1 = response.wind.speed;
 
