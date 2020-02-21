@@ -41,7 +41,7 @@ function getUVIndex(coords) {
   var lat = coords.lat;
   var lon = coords.lon;
   var queryUV =
-    "http://api.openweathermap.org/data/2.5/uvi?appid=9eb05d381db07ca6a0d36e08a08087f1&lat=" +
+    "https://api.openweathermap.org/data/2.5/uvi?appid=9eb05d381db07ca6a0d36e08a08087f1&lat=" +
     lat +
     "&lon=" +
     lon;
