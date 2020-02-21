@@ -16,24 +16,24 @@ function getUVIndex(coords) {
   // $("#mainCity").empty();
   // $("#currentDayPlus0").empty();
 
-  $("#mainTemp").empty();
+  $("#mainTemperature").empty();
   $("#mainHumidity").empty();
   $("#mainWind").empty();
   $("#mainUV").empty();
   // $("#currentDayPlus1").empty();
-  $("#smallTemp1").empty();
+  $("#smallTemperature1").empty();
   $("#smallHumidity1").empty();
   // $("#currentDayPlus2").empty();
-  $("#smallTemp2").empty();
+  $("#smallTemperature2").empty();
   $("#smallHumidity2").empty();
   // $("#currentDayPlus3").empty();
-  $("#smallTemp3").empty();
+  $("#smallTemperature3").empty();
   $("#smallHumidity3").empty();
   // $("#currentDayPlus4").empty();
-  $("#smallTemp4").empty();
+  $("#smallTemperature4").empty();
   $("#smallHumidity4").empty();
   // $("#currentDayPlus5").empty();
-  $("#smallTemp5").empty();
+  $("#smallTemperature5").empty();
   $("#smallHumidity5").empty();
  
   $("#weatherIconSmall1").empty();
@@ -130,7 +130,7 @@ if (response.weather["0"].main == "Clouds") {
 
     var mainDiv2 = document.createElement("div");
     var mainDiv2Temperature = mainDiv2.textContent = bigTemperature1;
-    $("#mainTemp").text(mainDiv2Temperature + " °");
+    $("#mainTemperature").text(mainDiv2Temperature + " °");
 
     $("#mainHumidity").text(bigHumidity1 + " %")
 
@@ -168,7 +168,7 @@ function searchForecast(val) {
 
     for (x = 0; x < 6; x++) {
       let weatherTemp = response.list[x].main.temp;
-      $("#smallTemp" + [x]).append((Math.floor(weatherTemp - 273.15) * 1.80 + 32).toFixed(0) + "°");     
+      $("#smallTemperature" + [x]).append((Math.floor(weatherTemp - 273.15) * 1.80 + 32).toFixed(0) + "°");     
     }
     
     for (x = 0; x < 6; x++) {
@@ -224,7 +224,7 @@ console.log("===========")
 
     var mainDiv2 = document.createElement("div");
     var mainDiv2Temperature = mainDiv2.textContent = bigTemperature1;
-    $("#mainTemp").text(mainDiv2Temperature);
+    $("#mainTemperature").text(mainDiv2Temperature);
 
   });
 }
