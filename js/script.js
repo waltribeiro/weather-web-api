@@ -65,7 +65,7 @@ function getUVIndex(coords) {
       } else {
         el.addClass("heatIndexRed")
       }
-        $("#mainUV").empty();
+
         $("#mainUV").append(el)
 
   })
