@@ -54,7 +54,7 @@ function getUVIndex(coords) {
     // Open Weather returns a JSON form
 
   }).then(function(response) {
-    console.log(response)
+    // console.log(response)
       var valueUV = response.value;
       var el = $("<span>").text(valueUV);
 
@@ -97,9 +97,9 @@ function searchWeather(val) {
       $(".list-group-history").append(li);
     }
     
-    console.log(response)
+    // console.log(response)
 
-    console.log("YEAEEE")
+    // console.log("YEAEEE")
 
 if (response.weather["0"].main == "Clouds") {
   $("#weatherIconMain").empty();
@@ -110,7 +110,10 @@ if (response.weather["0"].main == "Clouds") {
 } else if (response.weather["0"].main == "Rain") {
   $("#weatherIconMain").empty();
   $("#weatherIconMain").append(iconRain);
-} else {}
+} else {
+  $("#weatherIconMain").empty();
+  $("#weatherIconMain").append(iconSnowflake);
+}
 
 
 
@@ -176,21 +179,7 @@ function searchForecast(val) {
       $("#smallHumidity" + [x]).append(weatherHumidity.toFixed(0) + "%");    
     }
 
-    var iconSun = "<i class='fas fa-sun fa-7x d-flex justify-content-center' style='margin:10px'></i>";
-    var iconRain = "<i class='fas fa-cloud-rain fa-7x d-flex justify-content-center' style='margin:10px'></i>";
-    var iconSnowflake = "<i class='far fa-snowflake fa-7x d-flex justify-content-center' style='margin:10px'></i>";
-    var iconCloud = "<i class='fas fa-cloud-sun fa-7x d-flex justify-content-center' style='margin:10px'></i>";
 
-    for (x = 0; x < 6; x++) {
-      let weatherIcons = response.list[x].weather[x].main;
-      $("#weatherIconSmall" + [x]).append(weatherIcons);    
-    }
-
-console.log("===========")
-console.log(response.list[0].weather[0].main)
-console.log("===========")
-
-    console.log("============")
     // Go through the JSON form and pull data from the objects
     if (localStorageHistory.indexOf(val) === -1) {
           
@@ -207,24 +196,6 @@ console.log("===========")
     var littleHumidity1 = response.main.humidity;
     var littleWindSpeed1 = response.wind.speed;
 
-
-
-
-  //   // var bigUVIndex1 = 
-
-    // getUVIndex(coords)
-
-    // $("#mainHumidity").text(bigHumidity1)
-
-    // $("#mainWind").text(bigWindSpeed1)
-
-    // var mainDiv1 = document.createElement("div");
-    // var mainDiv1CityName = mainDiv1.textContent = bigCityName1;
-    //     $("#mainCity").text(mainDiv1CityName);
-
-    // var mainDiv2 = document.createElement("div");
-    // var mainDiv2Temperature = mainDiv2.textContent = bigTemperature1;
-    // $("#mainTemperature").text(mainDiv2Temperature);
 
   });
 }
