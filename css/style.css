@@ -309,17 +309,29 @@ img {
 }
 
 .heatIndexGreen {
-  color: green;
+  color: black;
+  background-color: rgb(129, 224, 129);
+  padding: 4px 8px 4px 8px;
+  border-radius: 10px;
 }
 
 .heatIndexYellow {
-  color: yellow;
+  color: black;
+  background-color: rgb(250, 250, 107);
+  padding: 4px 8px 4px 8px;
+  border-radius: 10px;
 }
 
 .heatIndexRed {
-  color: red;
+  color: black;
+  background-color: rgb(255, 95, 95);
+  padding: 4px 8px 4px 8px;
+  border-radius: 10px;
 }
 
+.card-title {
+  margin-top: 10px;
+}
 
 @media only screen and (max-width:768px) {
 

@@ -174,7 +174,7 @@
 
     <div class="row">
 
-      <div class="col-3">
+      <div id='aside' class="col-3">
         <nav class="navbar navbar-light bg-secondary" style="padding:0px">
           <form class="form-inline" id="citySearchForm">
 
@@ -201,12 +201,12 @@
 <br>&nbsp;</br>
 <br>&nbsp;</br>
 
-        <ul class="list-group">
-          <li id="sidebar1" class="list-group-item text-dark active"></li>
+        <ul class="list-group-history">
+          <!-- <li id="sidebar1" class="list-group-item text-dark active"></li>
           <li id="sidebar2" class="list-group-item text-dark disabled"></li>
           <li id="sidebar3" class="list-group-item text-dark"></li>
           <li id="sidebar4" class="list-group-item text-dark"></li>
-          <li id="sidebar5" class="list-group-item text-dark"></li>
+          <li id="sidebar5" class="list-group-item text-dark"></li> -->
         </ul>
 
       </div>
@@ -218,17 +218,30 @@
         <div class="card-deck-2">
 
           <div class="card weatherCard">
-            
+              
             <div class="card-body">
-              <h5 id="mainCity" class="card-title">CITY: </h5>
-              <p id="favicon-1">
-                <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
-              </p>
 
-              <p id="mainTemp">Temp: </p>
-              <p>Humidity: <span id="mainHumidity"></span> %</p>
-              <p>Wind: <span id="mainWind"></span> MPH</p>
-              <p id="mainUV">UV Index: </p>
+              <div class="d-inline-block">
+                <h2 id="mainCity" class="card-title">CITY: </h2>
+                <h5 id="currentDayPlus0" class="card-title"></h5>
+                <p id="favicon-1">
+                  <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
+                </p>
+                <p class="text-left"><strong>Temp: &nbsp;</strong></p>
+                <p class="text-left"><strong>Humidity: &nbsp;</strong></p>
+                <p class="text-left"><strong>Wind:&nbsp; </strong></p>
+                <p class="text-left"><strong>UV Index: &nbsp;</strong></p>
+              </div>
+
+              <div class="d-inline-block">
+                <h5>&nbsp;</h5>
+                <p><span id="mainTemp"></span> degrees</p>
+                <p><span id="mainHumidity"></span> %</p>
+                <p><span id="mainWind"></span> mph</p>
+                <p><span id="mainUV"></span></p>
+              </div>
+          
+
             </div>
 
           </div>
@@ -246,7 +259,7 @@
           <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 id="smallDate1" class="card-title">Date: </h5>
+              <h5 id="currentDayPlus1" class="card-title">Date: </h5>
               <p id="smallFavicon1">
                 <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
               </p>
@@ -261,7 +274,7 @@
           <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 id="smallDate2" class="card-title">Date: </h5>
+              <h5 id="currentDayPlus2" class="card-title">Date: </h5>
               <p id="smallFavicon2">
                 <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
               </p>
@@ -277,12 +290,12 @@
           <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 id="smallDate3" class="card-title">Date: </h5>
+              <h5 id="currentDayPlus3" class="card-title">Date: </h5>
               <p id="smallFavicon3">
                 <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
               </p>
 
-              <p id="smallDate3">Temp: </p>
+              <p id="smallTemp3">Temp: </p>
               <p id="date-1">Humidity: </p>
             </div>
 
@@ -294,7 +307,7 @@
           <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 id="smallDate4" class="card-title">Date: </h5>
+              <h5 id="currentDayPlus4" class="card-title">Date: </h5>
               <p id="smallFavicon4">
                 <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
               </p>
@@ -310,7 +323,7 @@
           <div class="card weatherCard bg-primary">
             
             <div class="card-body">
-              <h5 id="smallDate5" class="card-title">Date: </h5>
+              <h5 id="currentDayPlus5" class="card-title">Date: </h5>
               <p id="smallFavicon5">
                 <i class="fas fa-sun d-flex justify-content-center" style="margin:10px"></i>
               </p>
@@ -403,10 +416,10 @@
 <!-- Custom scripts for this template -->
 <script src="js/freelancer.js"></script>
 
-<!-- Soundcloud JS -->
-<script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
+<!-- Moment.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
-<!-- Password Generator -->
+<!-- Main -->
 <script src="js/script.js"></script>
 
   </body>
