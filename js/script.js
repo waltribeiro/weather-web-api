@@ -212,19 +212,19 @@ console.log("===========")
 
   //   // var bigUVIndex1 = 
 
-    getUVIndex(coords)
+    // getUVIndex(coords)
 
-    $("#mainHumidity").text(bigHumidity1)
+    // $("#mainHumidity").text(bigHumidity1)
 
-    $("#mainWind").text(bigWindSpeed1)
+    // $("#mainWind").text(bigWindSpeed1)
 
-    var mainDiv1 = document.createElement("div");
-    var mainDiv1CityName = mainDiv1.textContent = bigCityName1;
-        $("#mainCity").text(mainDiv1CityName);
+    // var mainDiv1 = document.createElement("div");
+    // var mainDiv1CityName = mainDiv1.textContent = bigCityName1;
+    //     $("#mainCity").text(mainDiv1CityName);
 
-    var mainDiv2 = document.createElement("div");
-    var mainDiv2Temperature = mainDiv2.textContent = bigTemperature1;
-    $("#mainTemperature").text(mainDiv2Temperature);
+    // var mainDiv2 = document.createElement("div");
+    // var mainDiv2Temperature = mainDiv2.textContent = bigTemperature1;
+    // $("#mainTemperature").text(mainDiv2Temperature);
 
   });
 }
