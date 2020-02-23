@@ -1,93 +1,51 @@
-var apiKey = "9eb05d381db07ca6a0d36e08a08087f1";
+// my local storage is overwriting my previous storage
 
-// search button captures the input you type in
+// how do I clear out searches
 
-document.getElementById('citySearchForm').addEventListener("submit", function(event) {
-  event.preventDefault();
-  var citySearchEntry = document.getElementById("citySearchInput").value;
-  console.log(citySearchEntry)
-  var queryURL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + citySearchEntry + "&appid=" + apiKey;
-  var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + citySearchEntry + "&appid=" + apiKey;
-
-  console.log(queryURL1)
-  console.log(queryURL2)
-  // takes that string and sends it as an API call to the Open Weather API
-
-  $.ajax({
-    url: queryURL1,
-    method: "GET"
-    
-    // Open Weather returns a JSON form
-
-  }).then(function(response) {
-    
-    // Go through the JSON form and pull data from the objects
-
-    console.log(response)
-    console.log("==========")
-    console.log(response.name);
-    console.log(response.coord.lat);
-    console.log(response.coord.lon);
-    console.log(response.main.temp);
-    
-    
-var coords = response.coord
-    var bigCityName1 = response.name;
-    var bigTemperature1 = ((Math.floor(response.main.temp - 273.15) * 1.80 + 32) + " degrees")
-    var bigHumidity1 = response.main.humidity
-    var bigWindSpeed1 = response.wind.speed
-    var currentTime = $("#currentDay").text(moment().format("MM/DD/YYYY"));
-    var currentTime1 = $("#currentDayPlus1").text(moment().add(1, 'days').format("MM/DD/YYYY"));
-    var currentTime2 = $("#currentDayPlus2").text(moment().add(2, 'days').format("MM/DD/YYYY"));
-    var currentTime3 = $("#currentDayPlus3").text(moment().add(3, 'days').format("MM/DD/YYYY"));
-    var currentTime4 = $("#currentDayPlus4").text(moment().add(4, 'days').format("MM/DD/YYYY"));
+// gitignore never works for me
 
 
-var currentWeather = "<i class=\"fas fa-sun d-flex justify-content-center\" style=\"margin:10px\"></i>"
-
-$("#currentWeather").append(currentWeather);
-
-console.log(currentWeather)
-
-/*
-<i class="fas fa-cloud d-flex justify-content-center" style="margin:10px"></i>
-<i class="fas fa-rainy d-flex justify-content-center" style="margin:10px"></i>
-<i class="fas fa-snowflake d-flex justify-content-center" style="margin:10px"></i>
-<i class="fas fa-cloud-rain d-flex justify-content-center" style="margin:10px"></i>
 
 
-var mainDiv1 = document.createElement("div");
-var mainDiv1CityName = mainDiv1.textContent = bigCityName1;
-    $("#mainCity").append(mainDiv1CityName);
-*/
-
-    getUVIndex(coords)
-
-    $("#mainHumidity").text(bigHumidity1)
-
-    $("#mainWind").text(bigWindSpeed1)
-
-    var mainDiv1 = document.createElement("div");
-    var mainDiv1CityName = mainDiv1.textContent = bigCityName1;
-        $("#mainCity").append(mainDiv1CityName);
-
-    var mainDiv2 = document.createElement("div");
-    var mainDiv2Temperature = mainDiv2.textContent = bigTemperature1;
-        $("#mainTemp").append(mainDiv2Temperature);
-
-  });
-
-var indexOfArray = 0;
-for (x = 0; x < 6; x++) {
-
-}
-
+//FUNCTION HANDLES AJAX FOR UV INDEX
 function getUVIndex(coords) {
-  console.log(coords)
+
+  // $("#citySearchForm").empty();
+  // $("#citySearchInput").empty();
+  // $("#citySearchButton").empty();
+  // $("#mainCity").empty();
+  // $("#currentDayPlus0").empty();
+
+  $("#mainTemperature").empty();
+  $("#mainHumidity").empty();
+  $("#mainWind").empty();
+  $("#mainUV").empty();
+  // $("#currentDayPlus1").empty();
+  $("#smallTemperature1").empty();
+  $("#smallHumidity1").empty();
+  // $("#currentDayPlus2").empty();
+  $("#smallTemperature2").empty();
+  $("#smallHumidity2").empty();
+  // $("#currentDayPlus3").empty();
+  $("#smallTemperature3").empty();
+  $("#smallHumidity3").empty();
+  // $("#currentDayPlus4").empty();
+  $("#smallTemperature4").empty();
+  $("#smallHumidity4").empty();
+  // $("#currentDayPlus5").empty();
+  $("#smallTemperature5").empty();
+  $("#smallHumidity5").empty();
+ 
+  $("#weatherIconSmall1").empty();
+  $("#weatherIconSmall2").empty();
+  $("#weatherIconSmall3").empty();
+  $("#weatherIconSmall4").empty();
+  $("#weatherIconSmall5").empty();
+
+
   var lat = coords.lat;
   var lon = coords.lon;
-  var queryUV = "http://api.openweathermap.org/data/2.5/uvi/forecast?appid=9eb05d381db07ca6a0d36e08a08087f1&lat=" + lat + "&lon=" + lon;
-
+  var queryUV = "https://api.openweathermap.org/data/2.5/uvi?appid=9eb05d381db07ca6a0d36e08a08087f1&lat=" + lat + "&lon=" + lon;
 
   $.ajax({
     url: queryUV,
@@ -96,108 +54,193 @@ function getUVIndex(coords) {
     // Open Weather returns a JSON form
 
   }).then(function(response) {
-    var valueUV = response[0].value;
-    console.log(response)
-    var el = $("<span>").text(valueUV);
+    // console.log(response)
+      
+      $("#mainUV").append(response.value)
 
-    if (valueUV < 3) {
-      el.addClass("heatIndexGreen")
-    } else if (valueUV < 7) {
-      el.addClass("heatIndexYellow")
-    } else {
-      el.addClass("heatIndexRed")
-    }
+      if (response.value < 3) {
+        $("#mainUV").addClass("heatIndexGreen")
+      } else if (response.value < 7) {
+        $("#mainUV").addClass("heatIndexYellow")
+      } else {
+        $("#mainUV").addClass("heatIndexRed")
+      }
 
-    $("#mainUV").append(el)
 
   })
-    
-    // Go through the JSON form and pull data from the objects
-
+      
 }
 
 
 
-  // takes that string and sends it as an API call to the Open Weather API
-
+//THIS FUNCTION HANDLES AJAX CALL FOR CURRENT WEATHER
+function searchWeather(val) {
+  var iconSun = "<i class='fas fa-sun fa-5x d-flex justify-content-center' style='margin:10px'></i>";
+  var iconRain = "<i class='fas fa-cloud-rain fa-5x d-flex justify-content-center' style='margin:10px'></i>";
+  var iconSnowflake = "<i class='far fa-snowflake fa-5x d-flex justify-content-center' style='margin:10px'></i>";
+  var iconCloud = "<i class='fas fa-cloud fa-5x d-flex justify-content-center' style='margin:10px'></i>";
+  
   $.ajax({
-    url: queryURL2,
+    url: "https://api.openweathermap.org/data/2.5/weather?q=" + val + "&appid=" + apiKey,
     method: "GET"
     
-    // Open Weather returns a JSON form
-
   }).then(function(response) {
     
     // Go through the JSON form and pull data from the objects
-
-    console.log(response)
-    console.log("==========")
-    console.log(response.city.name);
-    console.log(response.city.coord.lat);
-    console.log(response.city.coord.lon);
-    console.log(main.temp);
+    if (localStorageHistory.indexOf(val) === -1) {
+          
+      localStorageHistory.push(val);
+      localStorage.setItem("history", JSON.stringify(localStorageHistory));
+      console.log(val)
+      var li = $("<li>").addClass("list-group-item list-group-item-action list-group-item text-dark").text(val);
+      $(".list-group-history").append(li);
+    }
     
-    var cityName2 = response.city.name
-    var temperature2 = ((Math.floor(response.list["0"].main.temp - 273.15) * 1.80 + 32) + " degrees")
-    var humidity2 = response.list["0"].main.humidity
-    var windSpeed2 = response.list["0"].wind.speed
-    var uvIndex2 = response.city.name
+    // console.log(response)
+
+    // console.log("YEAEEE")
+
+if (response.weather["0"].main == "Clouds") {
+  $("#weatherIconMain").empty();
+  $("#weatherIconMain").append(iconCloud);
+} else if (response.weather["0"].main == "Clear") {
+  $("#weatherIconMain").empty();
+  $("#weatherIconMain").append(iconSun);
+} else if (response.weather["0"].main == "Rain") {
+  $("#weatherIconMain").empty();
+  $("#weatherIconMain").append(iconRain);
+} else {
+  $("#weatherIconMain").empty();
+  $("#weatherIconMain").append(iconSnowflake);
+}
+
+
+
+    var coords = response.coord
+    var bigCityName1 = response.name;
+//KELVIN TO FARENTHEIT DEGREES
+    var bigTemperature1 = ((Math.floor(response.main.temp - 273.15) * 1.80 + 32).toFixed(0))
+    var bigHumidity1 = response.main.humidity
+    var bigWindSpeed1 = response.wind.speed
+  //   // var bigUVIndex1 = 
+
+    getUVIndex(coords)
 
     var mainDiv1 = document.createElement("div");
-    var mainDiv1CityName = mainDiv1.textContent = cityName;
-        $("#mainCity").append(mainDiv1CityName);
+    var mainDiv1CityName = mainDiv1.textContent = bigCityName1;
+        $("#mainCity").text(mainDiv1CityName);
 
     var mainDiv2 = document.createElement("div");
-    var mainDiv2Temperature = mainDiv2.textContent = temperature;
-        $("#mainTemp").append(mainDiv2Temperature);
+    var mainDiv2Temperature = mainDiv2.textContent = bigTemperature1;
+    $("#mainTemperature").text(mainDiv2Temperature + " °");
+
+    $("#mainHumidity").text(bigHumidity1 + " %")
+
+    $("#mainWind").text(bigWindSpeed1 + " mph")
+
 
   });
-  
-});
+}
 
-
-// send that to each respective <div> elements
-
-
-localStorage.setItem('user', citySearchEntry)
-// localStorage.getItem('user', citySearchEntry)
-
-
-// make a loop of the 5 day forecast similiar to the Pearl Jam Quiz
+//MOMENT.js
+    var currentTime = $("#currentDayPlus0").text(moment().format("ddd MMM D").toUpperCase());
+    var currentTime1 = $("#currentDayPlus1").text(moment().add(1, 'days').format("ddd / D").toUpperCase());
+    var currentTime2 = $("#currentDayPlus2").text(moment().add(2, 'days').format("ddd / D").toUpperCase());
+    var currentTime3 = $("#currentDayPlus3").text(moment().add(3, 'days').format("ddd / D").toUpperCase());
+    var currentTime4 = $("#currentDayPlus4").text(moment().add(4, 'days').format("ddd / D").toUpperCase());
+    var currentTime5 = $("#currentDayPlus5").text(moment().add(5, 'days').format("ddd / D").toUpperCase());
 
 
 
 
 
 
-// Password checker for private work
-var chosenWord = "art";
 
+//THIS FUNCTION HANDLES AJAX CALL FOR 5-DAY FORECAST
+function searchForecast(val) {
+  console.log("++++++++++++++++")
+  console.log('val',val)
+  $.ajax({
+    url: "https://api.openweathermap.org/data/2.5/forecast?q=" + val + "&appid=" + apiKey,
+    method: "GET"
+  }).then(function(response) {
+    console.log(response)
+    console.log("11111111111111111")
+    console.log(response.list["0"].main.temp)
 
-function checkPass() {
-    var promptInput = prompt("Please enter the password to see more work");
-    if (promptInput === chosenWord) {
-        window.location.replace("http://linkedin.waltrib.com");
-    } else if (promptInput != chosenWord) {
-        alert("Incorrect password")
-    } else {
-
+    for (x = 0; x < 6; x++) {
+      let weatherTemp = response.list[x].main.temp;
+      $("#smallTemperature" + [x]).append((Math.floor(weatherTemp - 273.15) * 1.80 + 32).toFixed(0) + "°");     
     }
-};
+    
+    for (x = 0; x < 6; x++) {
+      let weatherHumidity = response.list[x].main.humidity;
+      $("#smallHumidity" + [x]).append(weatherHumidity.toFixed(0) + "%");    
+    }
+
+
+    // Go through the JSON form and pull data from the objects
+    if (localStorageHistory.indexOf(val) === -1) {
+          
+      localStorageHistory.push(val);
+      localStorage.setItem("history", JSON.stringify(localStorageHistory));
+      console.log(val)
+      var li = $("<li>").addClass("list-group-item list-group-item-action list-group-item text-dark").text(val);
+      $(".list-group-history").append(li);
+    }
+    
+    var coords = response.coord
+    var littleCityName1 = response.name;
+    var littleTemperature1 = ((Math.floor(response.main.temp - 273.15) * 1.80 + 32).toFixed(0) + "°");
+    var littleHumidity1 = response.main.humidity;
+    var littleWindSpeed1 = response.wind.speed;
+
+
+  });
+}
 
 
 
-/*
-get the value of what we searched
-push the value of what we searched ito an aray that is going to hold
-an array that is empty and this array is going to hold all of our search queries
-push this into our search history
 
-var history = local storage. setItem
 
-srtingify
 
-// UV Index = var queryURL = "https://api.openweathermap.org/data/2.5/uvi?q=
-// 1 day = var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=
-// 5 day = var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=
-*/
+
+
+
+
+
+//EVENT LISTENER (.ON), SEARCH VALUE HISTORY BUTTONS SIDEAR
+$(document).on('click', '.list-group-item', function() {
+  //console.log($(this).text())
+  var searchVal = $(this).text();
+  searchWeather(searchVal)
+  searchForecast(searchVal)
+})
+
+//EVENT LISTENER (.ON), GRABS AND STORES USER INPUT VALUE
+$('#citySearchButton').on('click', function() {
+  event.preventDefault();
+  var searchVal = $('#citySearchInput').val();
+  console.log('SearchVal', searchVal)
+  searchWeather(searchVal);
+  searchForecast(searchVal);
+
+  $('#citySearchInput').val('');
+
+})
+
+ // GLOBAL VARS
+var apiKey = "9eb05d381db07ca6a0d36e08a08087f1";
+var localStorageHistory = JSON.parse(localStorage.getItem("history")) || [];
+
+if (localStorageHistory.length > 0) {
+  console.log(history);
+  searchWeather(localStorageHistory[localStorageHistory.length-1]);
+}
+
+//THIS FOR LOOP, WILL CREATE A LIST ITEM AND APPEND TO PARENT DIV ON HTML (LIST OF SEARCHES)
+for (var i = 0; i < localStorageHistory.length; i++) {
+  console.log(localStorageHistory[i])
+  var li = $("<li>").addClass("list-group-item list-group-item-action").text(localStorageHistory[i]);
+  $("#aside .list-group-history").append(li);
+}
