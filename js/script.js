@@ -4,7 +4,12 @@
 
 // gitignore never works for me
 
-
+var iconSun = "<i class='fas fa-sun fa-5x d-flex justify-content-center' style='margin:10px;color:orange;'></i>";
+var iconRain = "<i class='fas fa-cloud-rain fa-5x d-flex justify-content-center' style='margin:10px;color:lightblue;'></i>";
+var iconSnow = "<i class='far fa-snowflake fa-5x d-flex justify-content-center' style='margin:10px;color:darkblue;'></i>";
+var iconClouds = "<i class='fas fa-cloud fa-5x d-flex justify-content-center' style='margin:10px;color:gray;'></i>";
+var iconThunder = "<i class='fas fa-bolt fa-5x d-flex justify-content-center' style='margin:10px;color:yellow;'></i>";
+var iconWind = "<i class='fas fa-wind fa-5x d-flex justify-content-center' style='margin:10px;color:gray;'></i>";
 
 
 //FUNCTION HANDLES AJAX FOR UV INDEX
@@ -75,11 +80,48 @@ function getUVIndex(coords) {
 
 //THIS FUNCTION HANDLES AJAX CALL FOR CURRENT WEATHER
 function searchWeather(val) {
-  var iconSun = "<i class='fas fa-sun fa-5x d-flex justify-content-center' style='margin:10px'></i>";
-  var iconRain = "<i class='fas fa-cloud-rain fa-5x d-flex justify-content-center' style='margin:10px'></i>";
-  var iconSnowflake = "<i class='far fa-snowflake fa-5x d-flex justify-content-center' style='margin:10px'></i>";
-  var iconCloud = "<i class='fas fa-cloud fa-5x d-flex justify-content-center' style='margin:10px'></i>";
-  
+  var weatherIconSun = `<img
+                        class="d-flex
+                        justify-content-center"
+                        style="width:130px"
+                        src="http://openweathermap.org/img/wn/01d@2x.png">`
+  var weatherIconPartlySunny = `<img
+                        class="d-flex
+                        justify-content-center"
+                        style="width:130px"
+                        src="http://openweathermap.org/img/wn/02d@2x.png">`
+  var weatherIconRain = `<img
+                        class="d-flex
+                        justify-content-center"
+                        style="width:130px"
+                        src="http://openweathermap.org/img/wn/10d@2x.png">`
+  var weatherIconSnow = `<img
+                        class="d-flex
+                        justify-content-center"
+                        style="width:130px"
+                        src="http://openweathermap.org/img/wn/13d@2x.png">`
+  var weatherIconClouds = `<img
+                        class="d-flex
+                        justify-content-center"
+                        style="width:130px"
+                        src="http://openweathermap.org/img/wn/03d@2x.png">`
+  var weatherIconMoon = `<img
+                        class="d-flex
+                        justify-content-center"
+                        style="width:130px"
+                        src="http://openweathermap.org/img/wn/01n@2x.png">`
+  var weatherIconThunder = `<img
+                        class="d-flex
+                        justify-content-center"
+                        style="width:130px"
+                        src="http://openweathermap.org/img/wn/11d@2x.png">`
+  var weatherIconWindy = `<img
+                        class="d-flex
+                        justify-content-center"
+                        style="width:130px"
+                        src="http://openweathermap.org/img/wn/50d@2x.png">`
+
+
   $.ajax({
     url: "https://api.openweathermap.org/data/2.5/weather?q=" + val + "&appid=" + apiKey,
     method: "GET"
@@ -98,20 +140,27 @@ function searchWeather(val) {
     
     // console.log(response)
 
-    // console.log("YEAEEE")
-
-if (response.weather["0"].main == "Clouds") {
-  $("#weatherIconMain").empty();
-  $("#weatherIconMain").append(iconCloud);
-} else if (response.weather["0"].main == "Clear") {
+console.log(response.weather);
+if (response.weather["0"].main == "Clear") {
   $("#weatherIconMain").empty();
   $("#weatherIconMain").append(iconSun);
 } else if (response.weather["0"].main == "Rain") {
   $("#weatherIconMain").empty();
   $("#weatherIconMain").append(iconRain);
-} else {
+} else if (response.weather["0"].main == "Snow") {
   $("#weatherIconMain").empty();
-  $("#weatherIconMain").append(iconSnowflake);
+  $("#weatherIconMain").append(iconSnow);
+} else if (response.weather["0"].main == "Thunder") {
+  $("#weatherIconMain").empty();
+  $("#weatherIconMain").append(iconThunder);
+} else if (response.weather["0"].main == "Wind") {
+  $("#weatherIconMain").empty();
+  $("#weatherIconMain").append(iconWind);
+} else if (response.weather["0"].main == "Clouds") {
+  $("#weatherIconMain").empty();
+  $("#weatherIconMain").append(iconClouds);
+} else {
+
 }
 
 
@@ -144,11 +193,11 @@ if (response.weather["0"].main == "Clouds") {
 
 //MOMENT.js
     var currentTime = $("#currentDayPlus0").text(moment().format("ddd MMM D").toUpperCase());
-    var currentTime1 = $("#currentDayPlus1").text(moment().add(1, 'days').format("ddd / D").toUpperCase());
-    var currentTime2 = $("#currentDayPlus2").text(moment().add(2, 'days').format("ddd / D").toUpperCase());
-    var currentTime3 = $("#currentDayPlus3").text(moment().add(3, 'days').format("ddd / D").toUpperCase());
-    var currentTime4 = $("#currentDayPlus4").text(moment().add(4, 'days').format("ddd / D").toUpperCase());
-    var currentTime5 = $("#currentDayPlus5").text(moment().add(5, 'days').format("ddd / D").toUpperCase());
+    var currentTime1 = $("#currentDayPlus1").text(moment().add(1, 'days').format("ddd / D").toUpperCase() + "th");
+    var currentTime2 = $("#currentDayPlus2").text(moment().add(2, 'days').format("ddd / D").toUpperCase() + "th");
+    var currentTime3 = $("#currentDayPlus3").text(moment().add(3, 'days').format("ddd / D").toUpperCase() + "th");
+    var currentTime4 = $("#currentDayPlus4").text(moment().add(4, 'days').format("ddd / D").toUpperCase() + "th");
+    var currentTime5 = $("#currentDayPlus5").text(moment().add(5, 'days').format("ddd / D").toUpperCase() + "th");
 
 
 
@@ -156,8 +205,9 @@ if (response.weather["0"].main == "Clouds") {
 
 
 
-//THIS FUNCTION HANDLES AJAX CALL FOR 5-DAY FORECAST
+//THIS FUNCTION HANDLES AJAX CALLS FOR 5-DAY FORECAST
 function searchForecast(val) {
+  
   console.log("++++++++++++++++")
   console.log('val',val)
   $.ajax({
@@ -166,7 +216,29 @@ function searchForecast(val) {
   }).then(function(response) {
     console.log(response)
     console.log("11111111111111111")
+    console.log(response.list)
     console.log(response.list["0"].main.temp)
+    console.log("69696969696996969")
+    console.log(response.list["0"].weather["0"].main)
+    console.log(response.list[1].weather["0"].main)
+
+
+    for (x = 0; x < 6; x++) {
+      let weatherDescription = response.list[x].weather["0"].main;
+      console.log("1 mississippi")
+      if (weatherDescription === "Clear") {
+      $("#weatherIconSmall" + [x]).append(iconSun);
+      } else if (weatherDescription === "Rain") {
+      $("#weatherIconSmall" + [x]).append(iconRain);
+      } else if (weatherDescription === "Clouds") {
+        $("#weatherIconSmall" + [x]).append(iconClouds);
+      } else if (weatherDescription === "Wind") {
+        $("#weatherIconSmall" + [x]).append(iconWind);
+      } else {
+        console.log("2 mississippi")
+      }
+
+    }
 
     for (x = 0; x < 6; x++) {
       let weatherTemp = response.list[x].main.temp;
@@ -209,7 +281,7 @@ function searchForecast(val) {
 
 
 
-//EVENT LISTENER (.ON), SEARCH VALUE HISTORY BUTTONS SIDEAR
+//EVENT LISTENER (.ON), SEARCH VALUE HISTORY BUTTONS SIDEBAR
 $(document).on('click', '.list-group-item', function() {
   //console.log($(this).text())
   var searchVal = $(this).text();

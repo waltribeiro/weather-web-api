@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <meta name="format-detection" content="telephone=no">
-    <title>Walt API Calls</title>
+    <title>Weather API</title>
 
     <link href="css/reset.css" rel="stylesheet" type="text/css" />
     
@@ -171,79 +171,111 @@
   <main class="container">
 
 
-    <div class="row">
-
-      <div id='aside' class="col-3">
-        <nav class="navbar navbar-light bg-secondary" style="padding:0px">
-          <form class="form-inline" id="citySearchForm">
-
-            <input
-            id="citySearchInput"
-            style="width:100%;display:flex"
-            class="form-control search"
-            type="search"
-            placeholder="Search city or state"
-            aria-label="Search">
-<p style="font-size:1px">&nbsp;</p>
-            <button
-            id="citySearchButton"
-            style="width:100%;height:10%;"
-            class="btn btn-primary paddingTop my-2 my-sm-0"
-            type="submit"
-            >
-              <i class="fas fa-search"></i>
-            </button>
 
 
-          </form>
-        </nav>
+      <div class="row">
+        <div class="col-sm">
 
-<br>&nbsp;</br>
-<br>&nbsp;</br>
+            <form class="form-inline" id="citySearchForm">
 
-        <ul class="list-group-history">
-          <!-- <li id="sidebar1" class="list-group-item text-dark active"></li>
-          <li id="sidebar2" class="list-group-item text-dark disabled"></li>
-          <li id="sidebar3" class="list-group-item text-dark"></li>
-          <li id="sidebar4" class="list-group-item text-dark"></li>
-          <li id="sidebar5" class="list-group-item text-dark"></li> -->
-        </ul>
+              <button
+              id="citySearchButton"
+              style="width:20%;height:10%;"
+              class="btn btn-primary paddingTop my-2 my-sm-0"
+              type="submit"
+              >
+                <i class="fas fa-search"></i>
+              </button>
+              <span
+              style="width:5%;height:10%;">
+            </span>
+              <input
+              id="citySearchInput"
+              style="width:75%;display:flex"
+              class="form-control search"
+              type="search"
+              placeholder="Search city or state"
+              aria-label="Search">
+
+            </form>
+
+            <p style="font-size:1px">&nbsp;</p>
+            
+            <div id="aside">
+              <!-- <p id="sidebarTop" class="text-white text-center" style="padding:0px;margin:0px;">Search History</p> -->
+              <ul class="list-group-history">
+                <!-- <li id="sidebar1" class="list-group-item text-dark active"></li>
+                <li id="sidebar2" class="list-group-item text-dark disabled"></li>
+                <li id="sidebar3" class="list-group-item text-dark"></li>
+                <li id="sidebar4" class="list-group-item text-dark"></li>
+                <li id="sidebar5" class="list-group-item text-dark"></li> -->
+              </ul>
+    
+            </div>
+
+
+        </div>
+
+        <p style="font-size:1px">&nbsp;</p>
+        
+        <div class="col-sm">
+          
+
+          <div class="card-deck-2">
+
+            <div class="card weatherCard">
+                
+              <div class="card-body">
+  
+                <h4 class="card-title text-center">
+                  <span id="currentDayPlus0" class="text-center"></span>
+                  
+                  <br>
+                  
+                  <span id="mainCity">
+                    <span style="color:white">
+                    </span>
+                  </span>
+
+                </h4>
+  
+                <div class="d-inline-block">                
+                  <p class="text-left"><span style="margin-right:58px"><strong>Temp: &nbsp;</strong></span> <span id="mainTemperature"></span></p>
+                  <p class="text-left"><span style="margin-right:48px"><strong>Humid: &nbsp;</strong></span> <span id="mainHumidity"></span></p>
+                  <p class="text-left"><span style="margin-right:60px"><strong>Wind: &nbsp;</strong></span> <span id="mainWind"></span></p>
+                  <p class="text-left" style="margin:0px;"><span style="margin-right:28px"><strong>UV Index: &nbsp;</strong></span> <span id="mainUV"></span></p>
+                </div>
+  
+                <div id="weatherIconMain" class="d-inline-block float-right">
+                </div>
+  
+              </div>
+  
+            </div>
+  
+          </div>
+
+          
+        </div>
+        
+
+
+
+
 
       </div>
+
+
+
+
+
+    <div class="row">
+
+
 
 <br>&nbsp;</br>
 
       <div class="col">
-
-        <div class="card-deck-2">
-
-          <div class="card weatherCard">
-              
-            <div class="card-body">
-
-              <h2 class="card-title">
-                <span id="mainCity">
-                  <span style="color:white">
-                  </span>
-                </span>
-                <span id="currentDayPlus0" class="text-right float-right" style="margin-right:5%"></span>
-              </h2>
-
-              <div class="d-inline-block">                
-                <p class="text-left"><span style="margin-right:78px"><strong>Temp: &nbsp;</strong></span> <span id="mainTemperature"></span></p>
-                <p class="text-left"><span style="margin-right:68px"><strong>Humid: &nbsp;</strong></span> <span id="mainHumidity"></span></p>
-                <p class="text-left"><span style="margin-right:80px"><strong>Wind: &nbsp;</strong></span> <span id="mainWind"></span></p>
-                <p class="text-left"><span style="margin-right:48px"><strong>UV Index: &nbsp;</strong></span> <span id="mainUV"></span></p>
-              </div>
-
-              <div id="weatherIconMain" class="d-inline-block float-right">
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
 
         <br>
         <br>

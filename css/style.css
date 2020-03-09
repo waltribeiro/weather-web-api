@@ -255,6 +255,19 @@ p i {
   vertical-align: bottom;
 }
 
+.list-group-history {
+  max-height: 160px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px;
+  overflow:scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.searchHistory {
+  overflow:scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
 @media (max-width: 690px) {
   #password {
     font-size: 1rem;
@@ -264,11 +277,4 @@ p i {
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   opacity: 1;
-}
-
-@media screen and (max-width: 620px) {
-  .hideImage {
-    visibility: hidden;
-    /* opacity: 0; */
-  }
 }
