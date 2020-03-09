@@ -182,9 +182,9 @@ if (response.weather["0"].main == "Clear") {
 
     var mainDiv2 = document.createElement("div");
     var mainDiv2Temperature = mainDiv2.textContent = bigTemperature1;
-    $("#mainTemperature").text(mainDiv2Temperature + " °");
+    $("#mainTemperature").text(mainDiv2Temperature + "°");
 
-    $("#mainHumidity").text(bigHumidity1 + " %")
+    $("#mainHumidity").text(bigHumidity1 + "%")
 
     $("#mainWind").text(bigWindSpeed1 + " mph")
 
