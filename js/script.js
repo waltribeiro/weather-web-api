@@ -5,9 +5,9 @@
 // gitignore never works for me
 
 var iconSun = "<i class='fas fa-sun fa-5x d-flex justify-content-center' style='margin:10px;color:orange;'></i>";
-var iconRain = "<i class='fas fa-cloud-rain fa-5x d-flex justify-content-center' style='margin:10px;color:lightblue;'></i>";
-var iconSnow = "<i class='far fa-snowflake fa-5x d-flex justify-content-center' style='margin:10px;color:darkblue;'></i>";
-var iconClouds = "<i class='fas fa-cloud fa-5x d-flex justify-content-center' style='margin:10px;color:gray;'></i>";
+var iconRain = "<i class='fas fa-cloud-rain fa-5x d-flex justify-content-center' style='margin:10px;color:blue;'></i>";
+var iconSnow = "<i class='far fa-snowflake fa-5x d-flex justify-content-center' style='margin:10px;color:blue;'></i>";
+var iconClouds = "<i class='fas fa-cloud fa-5x d-flex justify-content-center' style='margin:10px;color:darkgray;'></i>";
 var iconThunder = "<i class='fas fa-bolt fa-5x d-flex justify-content-center' style='margin:10px;color:yellow;'></i>";
 var iconWind = "<i class='fas fa-wind fa-5x d-flex justify-content-center' style='margin:10px;color:gray;'></i>";
 
@@ -177,7 +177,8 @@ if (response.weather["0"].main == "Clear") {
 
     var mainDiv1 = document.createElement("div");
     var mainDiv1CityName = mainDiv1.textContent = bigCityName1;
-        $("#mainCity").text(mainDiv1CityName);
+        $("#mainCity").text(mainDiv1CityName.toUpperCase() + " - ");
+
 
     var mainDiv2 = document.createElement("div");
     var mainDiv2Temperature = mainDiv2.textContent = bigTemperature1;
@@ -191,13 +192,14 @@ if (response.weather["0"].main == "Clear") {
   });
 }
 
-//MOMENT.js
-    var currentTime = $("#currentDayPlus0").text(moment().format("ddd MMM D").toUpperCase());
-    var currentTime1 = $("#currentDayPlus1").text(moment().add(1, 'days').format("ddd / D").toUpperCase() + "th");
-    var currentTime2 = $("#currentDayPlus2").text(moment().add(2, 'days').format("ddd / D").toUpperCase() + "th");
-    var currentTime3 = $("#currentDayPlus3").text(moment().add(3, 'days').format("ddd / D").toUpperCase() + "th");
-    var currentTime4 = $("#currentDayPlus4").text(moment().add(4, 'days').format("ddd / D").toUpperCase() + "th");
-    var currentTime5 = $("#currentDayPlus5").text(moment().add(5, 'days').format("ddd / D").toUpperCase() + "th");
+// MOMENT.js
+// documentation = https://momentjs.com/docs/#/displaying/format/
+    var currentTime = $("#currentDayPlus0").text(moment().format("MMMM Do"));
+    var currentTime1 = $("#currentDayPlus1").text(moment().add(1, 'days').format("dddd Do"));
+    var currentTime2 = $("#currentDayPlus2").text(moment().add(2, 'days').format("dddd Do"));
+    var currentTime3 = $("#currentDayPlus3").text(moment().add(3, 'days').format("dddd Do"));
+    var currentTime4 = $("#currentDayPlus4").text(moment().add(4, 'days').format("dddd Do"));
+    var currentTime5 = $("#currentDayPlus5").text(moment().add(5, 'days').format("dddd Do"));
 
 
 
