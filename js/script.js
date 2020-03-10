@@ -134,8 +134,8 @@ function searchWeather(val) {
       localStorageHistory.push(val);
       localStorage.setItem("history", JSON.stringify(localStorageHistory));
       console.log(val)
-      var li = $("<li>").addClass("list-group-item list-group-item-action list-group-item text-dark").text(val);
-      $(".list-group-history").append(li);
+      var p = $("<p>").addClass("list-group-item list-group-item-action list-group-item text-dark").text(val);
+      $(".list-group-history").append(p);
     }
     
     // console.log(response)
@@ -259,8 +259,8 @@ function searchForecast(val) {
       localStorageHistory.push(val);
       localStorage.setItem("history", JSON.stringify(localStorageHistory));
       console.log(val)
-      var li = $("<li>").addClass("list-group-item list-group-item-action list-group-item text-dark").text(val);
-      $(".list-group-history").append(li);
+      var p = $("<p>").addClass("list-group-item list-group-item-action list-group-item text-dark").text(val);
+      $(".list-group-history").append(p);
     }
     
     var coords = response.coord
@@ -315,6 +315,6 @@ if (localStorageHistory.length > 0) {
 //THIS FOR LOOP, WILL CREATE A LIST ITEM AND APPEND TO PARENT DIV ON HTML (LIST OF SEARCHES)
 for (var i = 0; i < localStorageHistory.length; i++) {
   console.log(localStorageHistory[i])
-  var li = $("<li>").addClass("list-group-item list-group-item-action").text(localStorageHistory[i]);
-  $("#aside .list-group-history").append(li);
+  var p = $("<p>").addClass("list-group-item list-group-item-action").text(localStorageHistory[i]);
+  $("#aside .list-group-history").append(p);
 }
