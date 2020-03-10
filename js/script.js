@@ -4,12 +4,12 @@
 
 // gitignore never works for me
 
-var iconSun = "<i class='fas fa-sun fa-5x d-flex justify-content-center' style='margin:10px;color:orange;'></i>";
-var iconRain = "<i class='fas fa-cloud-rain fa-5x d-flex justify-content-center' style='margin:10px;color:blue;'></i>";
-var iconSnow = "<i class='far fa-snowflake fa-5x d-flex justify-content-center' style='margin:10px;color:blue;'></i>";
-var iconClouds = "<i class='fas fa-cloud fa-5x d-flex justify-content-center' style='margin:10px;color:darkgray;'></i>";
+var iconSun = "<i class='fas fa-sun fa-5x d-flex justify-content-center' style='margin:0px 0px 0px 0px;color:orange;'></i>";
+var iconRain = "<i class='fas fa-cloud-rain fa-5x d-flex justify-content-center' style='margin:10px;color:dodgerblue;'></i>";
+var iconSnow = "<i class='far fa-snowflake fa-5x d-flex justify-content-center' style='margin:10px;color:dodgerblue;'></i>";
+var iconClouds = "<i class='fas fa-cloud fa-5x d-flex justify-content-center' style='margin:10px;color:slategray;'></i>";
 var iconThunder = "<i class='fas fa-bolt fa-5x d-flex justify-content-center' style='margin:10px;color:yellow;'></i>";
-var iconWind = "<i class='fas fa-wind fa-5x d-flex justify-content-center' style='margin:10px;color:gray;'></i>";
+var iconWind = "<i class='fas fa-wind fa-5x d-flex justify-content-center' style='margin:10px;color:slategray;'></i>";
 
 
 //FUNCTION HANDLES AJAX FOR UV INDEX
