@@ -135,7 +135,7 @@ function searchWeather(val) {
       localStorage.setItem("history", JSON.stringify(localStorageHistory));
       console.log(val)
       var p = $("<p>").addClass("list-group-item list-group-item-action list-group-item text-dark").text(val);
-      $(".list-group-history").append(p);
+      $(".list-group-history").prepend(p);
     }
     
     // console.log(response)
@@ -260,7 +260,7 @@ function searchForecast(val) {
       localStorage.setItem("history", JSON.stringify(localStorageHistory));
       console.log(val)
       var p = $("<p>").addClass("list-group-item list-group-item-action list-group-item text-dark").text(val);
-      $(".list-group-history").append(p);
+      $(".list-group-history").prepend(p);
     }
     
     var coords = response.coord
@@ -316,5 +316,5 @@ if (localStorageHistory.length > 0) {
 for (var i = 0; i < localStorageHistory.length; i++) {
   console.log(localStorageHistory[i])
   var p = $("<p>").addClass("list-group-item list-group-item-action").text(localStorageHistory[i]);
-  $("#aside .list-group-history").append(p);
+  $("#aside .list-group-history").prepend(p);
 }
