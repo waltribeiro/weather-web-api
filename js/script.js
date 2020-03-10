@@ -177,7 +177,7 @@ if (response.weather["0"].main == "Clear") {
 
     var mainDiv1 = document.createElement("div");
     var mainDiv1CityName = mainDiv1.textContent = bigCityName1;
-        $("#mainCity").text(mainDiv1CityName.toUpperCase() + " - ");
+        $("#mainCity").text(mainDiv1CityName.toUpperCase());
 
 
     var mainDiv2 = document.createElement("div");
